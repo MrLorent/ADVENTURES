@@ -8,7 +8,7 @@ char get_command_from_user()
 {
     char user_choice = get_input_from_user<char>();
 
-    while (!menu_contains_command(main_menu_list_of_options, main_menu_commands, user_choice)) {
+    while (!menu_contains_command(main_menu_options, main_menu_commands, user_choice)) {
         show_main_menu();
 
         std::string error_message = "Error : '";
@@ -27,7 +27,7 @@ void show_main_menu()
     display_main_title("MAIN MENU");
     std::string menu = "What do you want to do ?\n";
 
-    for (auto command : main_menu_list_of_options) {
+    for (auto command : main_menu_options) {
         menu += " ";
         menu += main_menu_commands.at(command);
         menu += ". " + main_menu_labels.at(command) + "\n";

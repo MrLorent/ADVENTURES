@@ -18,12 +18,12 @@ int main()
         const char command = get_command_from_user();
 
         switch (command) {
-        case static_cast<int>(main_menu_options::New_game):
+        case static_cast<int>(main_menu::New_game):
             player = Character(Magician("Gandalf"));
             player.introduce_themself();
             wait_for_any_key_pressed();
             break;
-        case static_cast<int>(main_menu_options::Quit):
+        case static_cast<int>(main_menu::Quit):
             quit = true;
             clear_console();
             display_text("See you ;)");
