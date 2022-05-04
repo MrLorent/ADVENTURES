@@ -10,6 +10,7 @@ private:
 
 public:
     // CONSTRUCTORS
+    Knight();
     Knight(const std::string& name);
 
     // DESTRUCTORS
@@ -20,5 +21,5 @@ public:
     // SETTERS
 
     // METHODS
-    void introduce_themself();
+    void introduce_themself() const;
 };
