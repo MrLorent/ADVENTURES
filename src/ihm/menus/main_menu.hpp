@@ -25,7 +25,10 @@ constexpr std::initializer_list<MainMenu> main_menu_options = {
     MainMenu::Quit,
 };
 
-const Menu<MainMenu> main_menu(main_menu_labels, main_menu_commands, main_menu_options);
+const Menu<MainMenu> main_menu(
+    main_menu_labels,
+    main_menu_commands,
+    main_menu_options,
+    'q');
 
 void show_main_menu();
-char get_command_from_user();

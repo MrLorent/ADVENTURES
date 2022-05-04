@@ -3,28 +3,36 @@
 
 #include <map>
 
-enum class classes_menu_options : char {
+#include "menu_commons.hpp"
+
+enum class ClassesMenu : char {
     Archer   = '1',
     Knight   = '2',
     Magician = '3',
 };
 
-const std::map<classes_menu_options, std::string> classes_menu_labels = {
-    {classes_menu_options::Archer, "Archer"},
-    {classes_menu_options::Knight, "Knight"},
-    {classes_menu_options::Magician, "Magician"},
+const std::map<ClassesMenu, std::string> classes_menu_labels = {
+    {ClassesMenu::Archer, "Archer"},
+    {ClassesMenu::Knight, "Knight"},
+    {ClassesMenu::Magician, "Magician"},
 };
 
-const std::map<classes_menu_options, char> classes_menu_commands = {
-    {classes_menu_options::Archer, '1'},
-    {classes_menu_options::Knight, '2'},
-    {classes_menu_options::Magician, '3'},
+const std::map<ClassesMenu, char> classes_menu_commands = {
+    {ClassesMenu::Archer, '1'},
+    {ClassesMenu::Knight, '2'},
+    {ClassesMenu::Magician, '3'},
 };
 
-constexpr std::initializer_list<classes_menu_options> classes_menu_list_of_options = {
-    classes_menu_options::Archer,
-    classes_menu_options::Knight,
-    classes_menu_options::Magician,
+constexpr std::initializer_list<ClassesMenu> classes_menu_options = {
+    ClassesMenu::Archer,
+    ClassesMenu::Knight,
+    ClassesMenu::Magician,
 };
+
+const Menu<ClassesMenu> classes_menu(
+    classes_menu_labels,
+    classes_menu_commands,
+    classes_menu_options,
+    '3');
 
 void show_classes_menu();
