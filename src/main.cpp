@@ -5,7 +5,7 @@
 #include "user_input.hpp"
 
 #include "main_menu.hpp"
-#include "characters.hpp"
+#include "character_classes.hpp"
 
 int main()
 {
@@ -16,6 +16,7 @@ int main()
     // the_knight.introduce_themself();
     // the_archer.introduce_themself();
     // the_magician.introduce_themself();
+
     bool quit = false;
     while (!quit) {
         show_main_menu();
