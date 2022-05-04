@@ -1,16 +1,14 @@
-#include <iostream>
-
+#include "display_functions.hpp"
 #include "user_input.hpp"
 #include "main_menu.hpp"
 
-bool menu_command_contains(const char command);
-void display_menu_title();
+bool main_menu_contains_command(const char command);
 
 char get_command_from_user()
 {
     char user_choice = get_input_from_user<char>();
 
-    while (!menu_command_contains(user_choice)) {
+    while (!main_menu_contains_command(user_choice)) {
         show_main_menu();
 
         std::string error_message = "Error : ";
@@ -24,9 +22,9 @@ char get_command_from_user()
     return std::tolower(user_choice);
 }
 
-bool menu_command_contains(const char command)
+bool main_menu_contains_command(const char command)
 {
-    for (auto command_name : main_menu_options) {
+    for (auto command_name : main_menu_list_of_options) {
         if (command == main_menu_commands.at(command_name) || command == char(main_menu_commands.at(command_name) + ('a' - 'A')))
             return true;
     }
@@ -36,20 +34,15 @@ bool menu_command_contains(const char command)
 
 void show_main_menu()
 {
-    display_menu_title();
+    display_main_title("MAIN MENU");
     std::string menu = "What do you want to do ?\n";
 
-    for (auto command : main_menu_options) {
+    for (auto command : main_menu_list_of_options) {
         menu += " ";
         menu += main_menu_commands.at(command);
-        menu += ". " + main_menu_labels.at(command) + "\n";
+        menu += ". " + main_menu_labels.at(command);
+        std::tolower(main_menu_commands.at(command)) != 'q' ? menu += "\n" : menu += "";
     }
 
-    std::cout << menu + "\n";
-}
-
-void display_menu_title()
-{
-    system("clear");
-    std::cout << "|=======| MAIN MENU |=======|\n\n";
+    display_text(menu);
 }

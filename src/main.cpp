@@ -1,8 +1,11 @@
 #include <iostream>
 
 #include "random.hpp"
-#include "characters.hpp"
+#include "display_functions.hpp"
+#include "user_input.hpp"
+
 #include "main_menu.hpp"
+#include "characters.hpp"
 
 int main()
 {
@@ -13,5 +16,24 @@ int main()
     // the_knight.introduce_themself();
     // the_archer.introduce_themself();
     // the_magician.introduce_themself();
-    show_main_menu();
+    bool quit = false;
+    while (!quit) {
+        show_main_menu();
+        const char command = get_command_from_user();
+
+        switch (command) {
+        case static_cast<int>(main_menu_options::New_game):
+            //TO DO
+            wait_for_any_key_pressed();
+            break;
+        case static_cast<int>(main_menu_options::Quit):
+            quit = true;
+            clear_console();
+            display_text("See you ;)");
+            break;
+        default:
+            std::cout << "Error [main.cpp] : Wrong command entered.\n";
+            break;
+        }
+    }
 }
