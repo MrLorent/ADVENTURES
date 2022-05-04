@@ -20,13 +20,16 @@ int main()
     std::variant<Archer, Knight, Magician> player;
     bool                                   quit = false;
 
+    auto call_introduce_themself = [](auto& character) { character.introduce_themself(); };
+
     while (!quit) {
         show_main_menu();
         const char command = get_command_from_user();
 
         switch (command) {
         case static_cast<int>(main_menu_options::New_game):
-            //TO DO
+            player = Magician("Gandalf");
+            std::visit(call_introduce_themself, player);
             wait_for_any_key_pressed();
             break;
         case static_cast<int>(main_menu_options::Quit):
