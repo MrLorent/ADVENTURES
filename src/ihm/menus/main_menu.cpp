@@ -8,7 +8,7 @@ char get_command_from_user()
 {
     char user_choice = get_input_from_user<char>();
 
-    while (!menu_contains_command(main_menu_options, main_menu_commands, user_choice)) {
+    while (!menu_contains_command(main_menu, user_choice)) {
         show_main_menu();
 
         std::string error_message = "Error : '";

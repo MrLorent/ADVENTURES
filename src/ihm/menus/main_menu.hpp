@@ -5,25 +5,27 @@
 
 #include "menu_commons.hpp"
 
-enum class main_menu : char {
+enum class MainMenu : char {
     New_game = '1',
     Quit     = 'q',
 };
 
-const std::map<main_menu, std::string> main_menu_labels = {
-    {main_menu::New_game, "New Game"},
-    {main_menu::Quit, "Quit"},
+const std::map<MainMenu, std::string> main_menu_labels = {
+    {MainMenu::New_game, "New Game"},
+    {MainMenu::Quit, "Quit"},
 };
 
-const std::map<main_menu, char> main_menu_commands = {
-    {main_menu::New_game, '1'},
-    {main_menu::Quit, 'Q'},
+const std::map<MainMenu, char> main_menu_commands = {
+    {MainMenu::New_game, '1'},
+    {MainMenu::Quit, 'Q'},
 };
 
-constexpr std::initializer_list<main_menu> main_menu_options = {
-    main_menu::New_game,
-    main_menu::Quit,
+constexpr std::initializer_list<MainMenu> main_menu_options = {
+    MainMenu::New_game,
+    MainMenu::Quit,
 };
+
+const Menu<MainMenu> main_menu(main_menu_labels, main_menu_commands, main_menu_options);
 
 void show_main_menu();
 char get_command_from_user();
