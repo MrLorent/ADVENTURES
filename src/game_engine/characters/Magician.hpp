@@ -10,6 +10,7 @@ private:
 
 public:
     // CONSTRUCTORS
+    Magician();
     Magician(const std::string& name);
 
     // DESTRUCTORS

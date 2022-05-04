@@ -3,6 +3,11 @@
 #include "Archer.hpp"
 
 // CONSTRUCTORS
+Archer::Archer()
+    : _caracs(Caracteristics("unknown", 100))
+{
+}
+
 Archer::Archer(const std::string& name)
     : _caracs(Caracteristics(name, 100))
 {

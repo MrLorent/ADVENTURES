@@ -10,6 +10,7 @@ private:
 
 public:
     // CONSTRUCTORS
+    Archer();
     Archer(const std::string& name);
 
     // DESTRUCTORS

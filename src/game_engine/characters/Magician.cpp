@@ -3,6 +3,11 @@
 #include "Magician.hpp"
 
 // CONSTRUCTORS
+Magician::Magician()
+    : _caracs(Caracteristics("unknown", 75))
+{
+}
+
 Magician::Magician(const std::string& name)
     : _caracs(Caracteristics(name, 75))
 {

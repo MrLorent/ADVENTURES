@@ -1,4 +1,5 @@
 #include <iostream>
+#include <variant>
 
 #include "random.hpp"
 #include "display_functions.hpp"
@@ -16,8 +17,9 @@ int main()
     // the_knight.introduce_themself();
     // the_archer.introduce_themself();
     // the_magician.introduce_themself();
+    std::variant<Archer, Knight, Magician> player;
+    bool                                   quit = false;
 
-    bool quit = false;
     while (!quit) {
         show_main_menu();
         const char command = get_command_from_user();

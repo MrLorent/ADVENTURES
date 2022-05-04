@@ -10,6 +10,7 @@ private:
 
 public:
     // CONSTRUCTORS
+    Knight();
     Knight(const std::string& name);
 
     // DESTRUCTORS
