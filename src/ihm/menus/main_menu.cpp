@@ -40,8 +40,7 @@ void show_main_menu()
     for (auto command : main_menu_list_of_options) {
         menu += " ";
         menu += main_menu_commands.at(command);
-        menu += ". " + main_menu_labels.at(command);
-        std::tolower(main_menu_commands.at(command)) != 'q' ? menu += "\n" : menu += "";
+        menu += ". " + main_menu_labels.at(command) + "\n";
     }
 
     display_text(menu);
