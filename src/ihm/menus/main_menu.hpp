@@ -3,6 +3,8 @@
 
 #include <map>
 
+#include "menu_commons.hpp"
+
 enum class main_menu_options : char {
     New_game = '1',
     Quit     = 'q',
