@@ -1,0 +1,2 @@
+#pragma once
+#define CHARACTER_INITIALISATION_HPP
