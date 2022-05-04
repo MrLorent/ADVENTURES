@@ -19,6 +19,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 include_directories(
     src
     src/random
+    src/ihm/menus
+    src/ihm/inputs
     src/characters
 )
 
