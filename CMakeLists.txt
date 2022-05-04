@@ -18,10 +18,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 # Add all our src code directories to our dev environement
 include_directories(
     src
-    src/random
+    src/game_engine/random
     src/ihm/menus
     src/ihm/inputs
-    src/characters
+    src/game_engine/characters
 )
 
 # Add all the files
