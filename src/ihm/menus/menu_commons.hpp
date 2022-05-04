@@ -18,7 +18,7 @@ struct Menu {
 };
 
 template<typename T>
-bool menu_contains_command(const Menu<T> menu, const char command)
+bool menu_contains_command(const Menu<T>& menu, const char command)
 {
     for (auto command_name : menu._options) {
         if (std::tolower(command) == std::tolower(menu._commands.at(command_name)))
