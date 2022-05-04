@@ -23,7 +23,7 @@ Archer::~Archer()
 // SETTERS
 
 // METHODS
-void Archer::introduce_themself()
+void Archer::introduce_themself() const
 {
     std::cout << "Hi there, I'm " << _caracs._name << ", the Archer.\n";
 }

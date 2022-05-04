@@ -21,5 +21,5 @@ public:
     // SETTERS
 
     // METHODS
-    void introduce_themself();
+    void introduce_themself() const;
 };

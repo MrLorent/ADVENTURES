@@ -1,12 +1,11 @@
 #include <iostream>
-#include <variant>
 
 #include "random.hpp"
 #include "display_functions.hpp"
 #include "user_input.hpp"
 
 #include "main_menu.hpp"
-#include "character_classes.hpp"
+#include "Character.hpp"
 
 int main()
 {
@@ -17,10 +16,8 @@ int main()
     // the_knight.introduce_themself();
     // the_archer.introduce_themself();
     // the_magician.introduce_themself();
-    std::variant<Archer, Knight, Magician> player;
-    bool                                   quit = false;
-
-    auto call_introduce_themself = [](auto& character) { character.introduce_themself(); };
+    Character player;
+    bool      quit = false;
 
     while (!quit) {
         show_main_menu();
@@ -28,8 +25,8 @@ int main()
 
         switch (command) {
         case static_cast<int>(main_menu_options::New_game):
-            player = Magician("Gandalf");
-            std::visit(call_introduce_themself, player);
+            player = Character(Magician("Gandalf"));
+            player.introduce_themself();
             wait_for_any_key_pressed();
             break;
         case static_cast<int>(main_menu_options::Quit):

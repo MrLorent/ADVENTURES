@@ -23,7 +23,7 @@ Magician::~Magician()
 // SETTERS
 
 // METHODS
-void Magician::introduce_themself()
+void Magician::introduce_themself() const
 {
     std::cout << "Hi there, I'm " << _caracs._name << ", the Magician.\n";
 }

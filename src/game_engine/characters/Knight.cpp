@@ -23,7 +23,7 @@ Knight::~Knight()
 // SETTERS
 
 // METHODS
-void Knight::introduce_themself()
+void Knight::introduce_themself() const
 {
     std::cout << "Hi there, I'm " << _caracs._name << ", the Knight.\n";
 }
