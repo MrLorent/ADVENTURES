@@ -15,15 +15,16 @@ int main()
 
     while (!quit) {
         show_main_menu();
-        const char command = get_command_from_user();
+        const char command = get_command_from_user<MainMenu>(main_menu, &show_main_menu);
 
         switch (command) {
-        case static_cast<int>(main_menu::New_game):
-            player = Character(Magician("Gandalf"));
+        case static_cast<int>(MainMenu::New_game):
+            player = create_new_character();
+            clear_console();
             player.introduce_themself();
             wait_for_any_key_pressed();
             break;
-        case static_cast<int>(main_menu::Quit):
+        case static_cast<int>(MainMenu::Quit):
             quit = true;
             clear_console();
             display_text("See you ;)");
