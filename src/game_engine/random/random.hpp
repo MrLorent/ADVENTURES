@@ -14,4 +14,5 @@ T rand(T min, T max)
     return distribution(generator);
 }
 
-int bernoulli(const float threshold);
+int   bernoulli(const float threshold);
+float box_muller(float expectation, float variance);

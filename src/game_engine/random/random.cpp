@@ -37,3 +37,16 @@ int random_choose(std::vector<int> universe, std::vector<float> probability)
 
     return universe[i];
 }
+
+float box_muller(float expectation, float variance)
+{
+    const float U1 = rand<float>(0.f, 1.f);
+    const float U2 = rand<float>(0.f, 1.f);
+
+    const float R     = std::sqrt(-2 * std::log(U1));
+    const float THETA = 2 * U2 * M_PI;
+
+    const float X = R * std::cos(THETA);
+
+    return expectation + variance * X;
+}
