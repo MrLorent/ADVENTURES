@@ -25,7 +25,8 @@ constexpr std::initializer_list<ActionsMenu> actions_menu_options = {
     ActionsMenu::Quit,
 };
 
-const Menu<ActionsMenu> classes_menu(
+const Menu<ActionsMenu> actions_menu(
+    "What do you want to do ?\n",
     actions_menu_labels,
     actions_menu_commands,
     actions_menu_options,

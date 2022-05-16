@@ -4,5 +4,5 @@
 void show_main_menu()
 {
     display_main_title("MAIN MENU");
-    display_menu_options(main_menu, "What do you want to do ?\n");
+    display_menu_options(main_menu);
 }

@@ -26,6 +26,7 @@ constexpr std::initializer_list<MainMenu> main_menu_options = {
 };
 
 const Menu<MainMenu> main_menu(
+    "What do you want to do ?\n",
     main_menu_labels,
     main_menu_commands,
     main_menu_options,

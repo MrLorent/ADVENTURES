@@ -30,6 +30,7 @@ constexpr std::initializer_list<ClassesMenu> classes_menu_options = {
 };
 
 const Menu<ClassesMenu> classes_menu(
+    "Choose your class :\n",
     classes_menu_labels,
     classes_menu_commands,
     classes_menu_options,

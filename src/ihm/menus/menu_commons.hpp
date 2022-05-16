@@ -8,25 +8,27 @@
 
 template<class T>
 struct Menu {
+    const std::string              _instruction;
     const std::map<T, std::string> _labels;
     const std::map<T, char>        _commands;
     const std::initializer_list<T> _options;
 
     const char _last_command;
 
-    Menu(const std::map<T, std::string>& labels,
+    Menu(const std::string               instruction,
+         const std::map<T, std::string>& labels,
          const std::map<T, char>&        commands,
          const std::initializer_list<T>& options,
          const char                      last_command)
-        : _labels(labels), _commands(commands), _options(options), _last_command(std::tolower(last_command))
+        : _instruction(instruction), _labels(labels), _commands(commands), _options(options), _last_command(std::tolower(last_command))
     {
     }
 };
 
 template<typename T>
-void display_menu_options(const Menu<T>& menu, const std::string& instruction)
+void display_menu_options(const Menu<T>& menu)
 {
-    std::string text_menu = instruction;
+    std::string text_menu = menu._instruction;
 
     for (auto command : menu._options) {
         text_menu += " ";
