@@ -29,6 +29,6 @@ const Menu<MainMenu> main_menu(
     main_menu_labels,
     main_menu_commands,
     main_menu_options,
-    'q');
+    'q' /* LAST COMMAND OF THE MENU */);
 
 void show_main_menu();

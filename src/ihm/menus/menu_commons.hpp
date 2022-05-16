@@ -24,9 +24,9 @@ struct Menu {
 };
 
 template<typename T>
-void display_menu_options(const Menu<T>& menu)
+void display_menu_options(const Menu<T>& menu, const std::string& instruction)
 {
-    std::string text_menu = "What do you want to do ?\n";
+    std::string text_menu = instruction;
 
     for (auto command : menu._options) {
         text_menu += " ";

@@ -33,6 +33,6 @@ const Menu<ClassesMenu> classes_menu(
     classes_menu_labels,
     classes_menu_commands,
     classes_menu_options,
-    '3');
+    '3' /* LAST COMMAND OF THE MENU */);
 
 void show_classes_menu();
