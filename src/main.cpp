@@ -4,7 +4,7 @@
 #include "display_functions.hpp"
 #include "user_input.hpp"
 
-#include "main_menu.hpp"
+#include "start_menu.hpp"
 #include "Character.hpp"
 #include "character_init.hpp"
 #include "actions_menu.hpp"
@@ -16,11 +16,11 @@ int main()
     bool      quit = false;
 
     while (!quit) {
-        show_main_menu();
-        const char command = get_command_from_user<MainMenu>(main_menu, &show_main_menu);
+        show_start_menu();
+        const char command = get_command_from_user<StartMenu>(start_menu, &show_start_menu);
 
         switch (command) {
-        case static_cast<int>(MainMenu::New_game): {
+        case static_cast<int>(StartMenu::New_game): {
             player         = create_new_character();
             bool game_quit = false;
 
@@ -42,7 +42,7 @@ int main()
                 }
             }
         } break;
-        case static_cast<int>(MainMenu::Quit):
+        case static_cast<int>(StartMenu::Quit):
             quit = true;
             clear_console();
             display_text("See you ;)");
