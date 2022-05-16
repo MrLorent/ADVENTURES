@@ -7,10 +7,12 @@
 #include "Knight.hpp"
 #include "Magician.hpp"
 
+using CharacterClass = std::variant<Archer, Knight, Magician>;
+
 class Character {
 private:
     // ATTRIBUT
-    std::variant<Archer, Knight, Magician> _type;
+    CharacterClass _type;
 
 public:
     // CONSTRUCTORS
