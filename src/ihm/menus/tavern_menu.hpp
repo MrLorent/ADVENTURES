@@ -16,7 +16,7 @@ const std::map<TavernMenu, std::string> tavern_menu_labels = {
     {TavernMenu::Quest_1, "Quest 1"},
     {TavernMenu::Quest_2, "Quest 2"},
     {TavernMenu::Quest_3, "Quest 3"},
-    {TavernMenu::Quit, "Quit"},
+    {TavernMenu::Quit, "Quit Tavern"},
 };
 
 const std::map<TavernMenu, char> tavern_menu_commands = {
