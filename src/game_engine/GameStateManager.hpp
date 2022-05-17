@@ -2,6 +2,8 @@
 #define GAME_STATE_MANAGER
 
 #include "start_menu.hpp"
+#include "main_menu.hpp"
+#include "tavern_menu.hpp"
 
 // CONSTANTS
 enum Menus {

@@ -23,7 +23,7 @@ const std::map<TavernMenu, char> tavern_menu_commands = {
     {TavernMenu::Quest_1, '1'},
     {TavernMenu::Quest_2, '2'},
     {TavernMenu::Quest_3, '3'},
-    {TavernMenu::Quit, 'q'},
+    {TavernMenu::Quit, 'Q'},
 };
 
 constexpr std::initializer_list<TavernMenu> tavern_menu_options = {
@@ -34,7 +34,7 @@ constexpr std::initializer_list<TavernMenu> tavern_menu_options = {
 };
 
 const Menu<TavernMenu> tavern_menu(
-    "Choose your quest :\n",
+    "Choose your quest :",
     tavern_menu_labels,
     tavern_menu_commands,
     tavern_menu_options,

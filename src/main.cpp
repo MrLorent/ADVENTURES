@@ -6,8 +6,6 @@
 #include "GameStateManager.hpp"
 #include "Character.hpp"
 #include "character_init.hpp"
-#include "main_menu.hpp"
-#include "tavern_menu.hpp"
 
 int main()
 {
@@ -28,7 +26,12 @@ int main()
         } break;
 
         case Menus::Main_Menu: {
-            show_main_menu();
+            const char command = show_main_menu();
+            game_manager.set_state(command);
+        } break;
+
+        case Menus::Tavern_Menu: {
+            show_tavern_menu();
             wait_for_any_key_pressed();
         } break;
 

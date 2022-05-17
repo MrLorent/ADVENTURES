@@ -17,7 +17,7 @@ const std::map<MainMenu, std::string> main_menu_labels = {
 
 const std::map<MainMenu, char> main_menu_commands = {
     {MainMenu::Tavern, '1'},
-    {MainMenu::Quit, 'q'},
+    {MainMenu::Quit, 'Q'},
 };
 
 constexpr std::initializer_list<MainMenu> main_menu_options = {
@@ -32,4 +32,4 @@ const Menu<MainMenu> main_menu(
     main_menu_options,
     'q' /* LAST COMMAND OF THE MENU */);
 
-void show_main_menu();
+char show_main_menu();

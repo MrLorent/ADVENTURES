@@ -13,5 +13,5 @@ void display_main_title(const std::string_view main_title)
 
 void display_text(const std::string_view text)
 {
-    std::cout << text << "\n\n";
+    std::cout << text << "\n";
 }
