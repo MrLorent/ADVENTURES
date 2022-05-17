@@ -1,6 +1,8 @@
 #pragma once
 #define GAME_STATE_MANAGER
 
+#include "start_menu.hpp"
+
 // CONSTANTS
 enum Menus {
     Start_Menu               = 0,
@@ -23,7 +25,8 @@ struct GameStateManager {
     // GETTERS
 
     // SETTERS
-    void set_game_state(const short unsigned int new_state, const char command);
+    void set_state(const char command);
+    void set_state(const int new_state);
 
     // METHODS
 };

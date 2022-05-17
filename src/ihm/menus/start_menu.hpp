@@ -32,4 +32,4 @@ const Menu<StartMenu> start_menu(
     start_menu_options,
     'q' /* LAST COMMAND OF THE MENU */);
 
-void show_start_menu();
+char show_start_menu();
