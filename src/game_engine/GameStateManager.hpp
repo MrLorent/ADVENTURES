@@ -11,7 +11,8 @@ enum Menus {
     Character_Initialisation = 1,
     Main_Menu                = 2,
     Tavern_Menu              = 3,
-    Quit                     = 4,
+    Quest_Countdown          = 4,
+    Quit                     = 5,
 };
 
 struct GameStateManager {

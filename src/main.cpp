@@ -31,7 +31,12 @@ int main()
         } break;
 
         case Menus::Tavern_Menu: {
-            show_tavern_menu();
+            const char command = show_tavern_menu();
+            game_manager.set_state(command);
+        } break;
+
+        case Menus::Quest_Countdown: {
+            display_main_title("REACHING THE QUEST PLACE");
             wait_for_any_key_pressed();
         } break;
 

@@ -3,6 +3,7 @@
 #include "random.hpp"
 #include "time_functions.hpp"
 #include "display_functions.hpp"
+#include "menu_commons.hpp"
 #include "tavern_menu.hpp"
 
 // LOCAL GLOBALS
@@ -29,13 +30,17 @@ void display_tavern_menu()
             option_text += " (Duration : " + get_float_without_zeros(quests_durations.at(quest_count)) + " min)";
             quest_count++;
         }
+        else {
+            option_text += "\n";
+        }
 
         display_text(option_text);
     }
 }
 
-void show_tavern_menu()
+char show_tavern_menu()
 {
+    // GET THREE RANDOM DURATION FOR THE QUESTS
     float duration = 5.f;
 
     for (short unsigned int i = 0; i < nb_quests; i++) {
@@ -44,4 +49,6 @@ void show_tavern_menu()
     }
 
     display_tavern_menu();
+
+    return get_command_from_user<TavernMenu>(tavern_menu, &display_tavern_menu);
 }
