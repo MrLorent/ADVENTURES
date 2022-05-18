@@ -42,9 +42,9 @@ int main()
         default:
             break;
         }
-        clear_console();
-        display_text("See you ;)");
     }
+    clear_console();
+    display_text("See you ;)");
 }
 
 // show_start_menu();

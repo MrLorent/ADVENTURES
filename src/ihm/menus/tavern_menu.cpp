@@ -1,12 +1,20 @@
 #include <vector>
 
 #include "random.hpp"
+#include "time_functions.hpp"
 #include "display_functions.hpp"
 #include "tavern_menu.hpp"
 
-void display_tavern_menu(const std::vector<float>& durations);
+// LOCAL GLOBALS
+namespace {
+constexpr short unsigned nb_quests = 3;
+std::vector<float>       quests_durations(nb_quests, 0.f);
+} // namespace
 
-void display_tavern_menu(const std::vector<float>& durations)
+// PROTOTYPES
+void display_tavern_menu();
+
+void display_tavern_menu()
 {
     short unsigned int quest_count = 0;
     display_main_title("TAVERN");
@@ -18,7 +26,7 @@ void display_tavern_menu(const std::vector<float>& durations)
         option_text += ". " + tavern_menu._labels.at(command);
 
         if (std::tolower(tavern_menu._commands.at(command)) != std::tolower(tavern_menu._last_command)) {
-            option_text += " (Duration : " + std::to_string(durations.at(quest_count)) + " min)";
+            option_text += " (Duration : " + get_float_without_zeros(quests_durations.at(quest_count)) + " min)";
             quest_count++;
         }
 
@@ -28,14 +36,12 @@ void display_tavern_menu(const std::vector<float>& durations)
 
 void show_tavern_menu()
 {
-    const short unsigned int NB_QUESTS = 3;
-    std::vector<float>       quests_durations(NB_QUESTS, 0.f);
-    float                    duration = 5.f;
+    float duration = 5.f;
 
-    for (short unsigned int i = 0; i < NB_QUESTS; i++) {
-        quests_durations[i] = box_muller(duration, 2.f);
+    for (short unsigned int i = 0; i < nb_quests; i++) {
+        quests_durations[i] = convert_float_in_minutes(box_muller(duration, 2.f));
         duration += 5;
     }
 
-    display_tavern_menu(quests_durations);
+    display_tavern_menu();
 }
