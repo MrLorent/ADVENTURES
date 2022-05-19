@@ -1,5 +1,4 @@
-#include <time.h>
-#include "time_functions.hpp"
+#include "casts.hpp"
 
 float convert_float_in_minutes(const float signed_time)
 {
@@ -15,7 +14,7 @@ std::string get_float_without_zeros(const float decimal)
 {
     std::string clean_decimal = std::to_string(decimal);
 
-    while (clean_decimal.at(clean_decimal.size() - 1) == '0') {
+    while (clean_decimal.at(clean_decimal.size() - 1) == '0' || clean_decimal.at(clean_decimal.size() - 1) == '.') {
         clean_decimal.pop_back();
     }
 

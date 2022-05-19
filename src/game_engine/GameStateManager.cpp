@@ -50,13 +50,13 @@ void GameStateManager::set_state(const char command)
     case Menus::Tavern_Menu:
         switch (command) {
         case static_cast<int>(TavernMenu::Quest_1):
-            _state = Menus::Quest_Countdown;
+            _state = Menus::Quest_Menu;
             break;
         case static_cast<int>(TavernMenu::Quest_2):
-            _state = Menus::Quest_Countdown;
+            _state = Menus::Quest_Menu;
             break;
         case static_cast<int>(TavernMenu::Quest_3):
-            _state = Menus::Quest_Countdown;
+            _state = Menus::Quest_Menu;
             break;
         case static_cast<int>(TavernMenu::Quit):
             _state = Menus::Main_Menu;

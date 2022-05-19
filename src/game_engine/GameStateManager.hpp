@@ -4,6 +4,7 @@
 #include "start_menu.hpp"
 #include "main_menu.hpp"
 #include "tavern_menu.hpp"
+#include "quest_menu.hpp"
 
 // CONSTANTS
 enum Menus {
@@ -11,7 +12,7 @@ enum Menus {
     Character_Initialisation = 1,
     Main_Menu                = 2,
     Tavern_Menu              = 3,
-    Quest_Countdown          = 4,
+    Quest_Menu               = 4,
     Quit                     = 5,
 };
 

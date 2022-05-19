@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "random.hpp"
+#include "casts.hpp"
 #include "display_functions.hpp"
 
 #include "GameStateManager.hpp"
@@ -11,7 +12,8 @@ int main()
 {
     GameStateManager game_manager;
     Character        player;
-    bool             quit = false;
+    float            quest_duration = 0.f;
+    bool             quit           = false;
 
     while (!quit) {
         switch (game_manager._state) {
@@ -31,13 +33,12 @@ int main()
         } break;
 
         case Menus::Tavern_Menu: {
-            const char command = show_tavern_menu();
+            const char command = show_tavern_menu(quest_duration);
             game_manager.set_state(command);
         } break;
 
-        case Menus::Quest_Countdown: {
-            display_main_title("REACHING THE QUEST PLACE");
-            wait_for_any_key_pressed();
+        case Menus::Quest_Menu: {
+            show_countdown_menu(quest_duration);
         } break;
 
         case Menus::Quit: {

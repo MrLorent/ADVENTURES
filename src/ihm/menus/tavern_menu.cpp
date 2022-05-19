@@ -1,7 +1,7 @@
 #include <vector>
 
 #include "random.hpp"
-#include "time_functions.hpp"
+#include "casts.hpp"
 #include "display_functions.hpp"
 #include "menu_commons.hpp"
 #include "tavern_menu.hpp"
@@ -38,7 +38,7 @@ void display_tavern_menu()
     }
 }
 
-char show_tavern_menu()
+char show_tavern_menu(float& selected_quest_duration)
 {
     // GET THREE RANDOM DURATION FOR THE QUESTS
     float duration = 5.f;
@@ -50,5 +50,11 @@ char show_tavern_menu()
 
     display_tavern_menu();
 
-    return get_command_from_user<TavernMenu>(tavern_menu, &display_tavern_menu);
+    const char command = get_command_from_user<TavernMenu>(tavern_menu, &display_tavern_menu);
+
+    if (std::tolower(command) != 'q') {
+        selected_quest_duration = quests_durations[int(command - '0') - 1];
+    }
+
+    return command;
 }

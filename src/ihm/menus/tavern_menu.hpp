@@ -40,4 +40,4 @@ const Menu<TavernMenu> tavern_menu(
     tavern_menu_options,
     'q' /* LAST COMMAND OF THE MENU */);
 
-char show_tavern_menu();
+char show_tavern_menu(float& selected_quest_duration);

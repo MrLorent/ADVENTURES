@@ -1,5 +1,5 @@
 #pragma once
-#define TIME_FUNCTIONS_HPP
+#define CASTS_HPP
 
 #include <string>
 
