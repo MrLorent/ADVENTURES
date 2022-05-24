@@ -50,3 +50,14 @@ float box_muller(float expectation, float variance)
 
     return expectation + variance * X;
 }
+
+float generalized_erlang(const float t, const std::vector<float>& lambdas)
+{
+    float result = 0.f;
+
+    for (float lambda : lambdas) {
+        result += lambda * std::exp(-t * lambda);
+    }
+
+    return result;
+}

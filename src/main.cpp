@@ -10,6 +10,10 @@
 
 int main()
 {
+    while (true) {
+        std::cout << generalized_erlang(rand<float>(0.f, 1.f), std::vector<float>(2.0, 0.0) = {1.f, 2.f});
+        wait_for_any_key_pressed();
+    }
     GameStateManager game_manager;
     Character        player;
     float            quest_duration = 0.f;
