@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include <json/json.h>
 
@@ -50,11 +51,12 @@ std::vector<Monster> load_monsters()
 
 void get_random_monster()
 {
-    const float        t       = rand<float>(0.f, 1.f);
-    std::vector<float> lambdas = {1.f, 2.f, 3.f};
+    const int          MAX_RANK = LIST_OF_MONSTERS.size() - 1;
+    const float        t        = rand<float>(0.f, 1.f);
+    std::vector<float> lambdas  = {1.f, 2.f, 3.f};
 
-    const float random_rank = generalized_erlang(t, lambdas);
-    const int   rank        = (LIST_OF_MONSTERS.size() - 1) * random_rank / 5.f;
+    const float X    = generalized_erlang(t, lambdas);
+    const int   rank = std::clamp(int(MAX_RANK * X / 5.f), 0, MAX_RANK);
 
     std::cout << LIST_OF_MONSTERS[rank]._name << "\n"
               << LIST_OF_MONSTERS[rank]._experience << "xp\n";
