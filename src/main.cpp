@@ -11,7 +11,7 @@
 int main()
 {
     while (true) {
-        std::cout << generalized_erlang(rand<float>(0.f, 1.f), std::vector<float>(2.0, 0.0) = {1.f, 2.f});
+        get_random_monster();
         wait_for_any_key_pressed();
     }
     GameStateManager game_manager;
