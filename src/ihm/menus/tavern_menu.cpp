@@ -22,19 +22,20 @@ void display_tavern_menu()
     display_text(tavern_menu._instruction);
 
     for (auto command : tavern_menu._options) {
-        std::string option_text = " ";
-        option_text += tavern_menu._commands.at(command);
-        option_text += ". " + tavern_menu._labels.at(command);
+        std::string option = " ";
+        option += tavern_menu._commands.at(command);
+        option += ". " + tavern_menu._labels.at(command);
+        display_line(option);
 
         if (std::tolower(tavern_menu._commands.at(command)) != std::tolower(tavern_menu._last_command)) {
-            option_text += " (Duration : " + get_float_without_zeros(quests_durations.at(quest_count)) + " min)";
+            display_line(" (Duration : ");
+            display_decimal_with_precision(quests_durations.at(quest_count), 2);
+            display_line(" min)\n");
             quest_count++;
         }
         else {
-            option_text += "\n";
+            display_text("\n");
         }
-
-        display_text(option_text);
     }
 }
 
