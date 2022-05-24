@@ -5,6 +5,7 @@
 #include "main_menu.hpp"
 #include "tavern_menu.hpp"
 #include "quest_menu.hpp"
+#include "fight_menu.hpp"
 
 // CONSTANTS
 enum Menus {

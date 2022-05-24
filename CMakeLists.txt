@@ -17,6 +17,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 # Add all our src code directories to our dev environement
 include_directories(
+    third-party/jsoncpp/include
     src
     src/my-libs/casts
     src/my-libs/random
@@ -26,7 +27,15 @@ include_directories(
     src/ihm/inputs
 )
 
+# Add the jsoncpp library
+add_subdirectory(${CMAKE_SOURCE_DIR}/third-party/jsoncpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE jsoncpp_lib)
+
 # Add all the files
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS src/*)
 target_sources(${PROJECT_NAME} PRIVATE ${MY_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE src)
+
+#Add a post build operation to copy assets folder to the output folder
+include("CMakeUtils/files_and_folders.cmake")
+Cool__target_copy_folder(${PROJECT_NAME} ${PROJECT_NAME} "assets")

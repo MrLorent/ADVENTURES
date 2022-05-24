@@ -1,0 +1,6 @@
+[submodule "CMakeUtils"]
+	path = CMakeUtils
+	url = https://github.com/CoolLibs/CMakeUtils.git
+[submodule "third-party/jsoncpp"]
+	path = third-party/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp.git

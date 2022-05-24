@@ -10,6 +10,10 @@
 
 int main()
 {
+    while (true) {
+        get_random_monster();
+        wait_for_any_key_pressed();
+    }
     GameStateManager game_manager;
     Character        player;
     float            quest_duration = 0.f;

@@ -16,3 +16,4 @@ T rand(T min, T max)
 
 int   bernoulli(const float threshold);
 float box_muller(float expectation, float variance);
+float generalized_erlang(const float t, const std::vector<float>& lambdas);
