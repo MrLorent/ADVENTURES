@@ -5,7 +5,7 @@ Character create_new_character()
     Character   new_player;
     std::string user_pseudoname;
     display_main_title("NEW CHARACTER - NAME");
-    display_text("Enter your pseudoname :");
+    display_text("Enter your pseudoname :\n");
 
     do {
         user_pseudoname = get_input_from_user<std::string>();

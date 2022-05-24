@@ -16,14 +16,14 @@ const std::map<TavernMenu, std::string> tavern_menu_labels = {
     {TavernMenu::Quest_1, "Quest 1"},
     {TavernMenu::Quest_2, "Quest 2"},
     {TavernMenu::Quest_3, "Quest 3"},
-    {TavernMenu::Quit, "Quit"},
+    {TavernMenu::Quit, "Quit Tavern"},
 };
 
 const std::map<TavernMenu, char> tavern_menu_commands = {
     {TavernMenu::Quest_1, '1'},
     {TavernMenu::Quest_2, '2'},
     {TavernMenu::Quest_3, '3'},
-    {TavernMenu::Quit, 'q'},
+    {TavernMenu::Quit, 'Q'},
 };
 
 constexpr std::initializer_list<TavernMenu> tavern_menu_options = {
@@ -34,10 +34,10 @@ constexpr std::initializer_list<TavernMenu> tavern_menu_options = {
 };
 
 const Menu<TavernMenu> tavern_menu(
-    "Choose your quest :\n",
+    "Choose your quest :",
     tavern_menu_labels,
     tavern_menu_commands,
     tavern_menu_options,
     'q' /* LAST COMMAND OF THE MENU */);
 
-void show_tavern_menu();
+char show_tavern_menu(float& selected_quest_duration);

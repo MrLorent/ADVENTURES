@@ -33,10 +33,7 @@ void display_menu_options(const Menu<T>& menu)
     for (auto command : menu._options) {
         text_menu += " ";
         text_menu += menu._commands.at(command);
-        text_menu += ". " + menu._labels.at(command);
-
-        /* Only add a line break if the current option isn't the last one */
-        std::tolower(menu._commands.at(command)) != std::tolower(menu._last_command) ? text_menu += "\n" : text_menu += "";
+        text_menu += ". " + menu._labels.at(command) + "\n";
     }
 
     display_text(text_menu);
