@@ -7,7 +7,7 @@ struct Caracteristics {
     // ATTRIBUTS
     std::string        _name;
     short unsigned int _level;
-    unsigned int       _health;
+    unsigned int       _health_points;
 
     // CONSTRUCTORS
     Caracteristics(const std::string& name, const unsigned int health);

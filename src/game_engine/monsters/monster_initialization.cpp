@@ -14,15 +14,11 @@
 
 struct Monster {
     const std::string _name;
+    const int         _health_points;
     const int         _experience;
 
-    Monster()
-        : _name("unknown"), _experience(0)
-    {
-    }
-
-    Monster(const std::string name, const int experience)
-        : _name(name), _experience(experience)
+    Monster(const std::string name = "unknown", const int health_points = 1, const int experience = 0)
+        : _name(name), _health_points(health_points), _experience(experience)
     {
     }
 };
@@ -43,7 +39,7 @@ std::vector<Monster> load_monsters()
         json_file >> monsters_json;
 
         for (auto monster : monsters_json["monsters"]) {
-            list_of_monsters.push_back(Monster(monster.get("name", "unknown").asString(), monster.get("xp", 0).asInt()));
+            list_of_monsters.push_back(Monster(monster.get("name", "unknown").asString(), monster.get("hit_points", 1).asInt(), monster.get("xp", 0).asInt()));
         }
     }
     catch (const std::exception& e) {
@@ -61,6 +57,7 @@ Monster get_random_monster()
 
     const float X    = generalized_erlang(t, lambdas);
     const int   rank = std::clamp(int(MAX_RANK * X / 5.f), 0, MAX_RANK);
+    assert((rank >= 0 || rank <= MAX_RANK) && "Rank asked out of range of LIST_OF_MONSTERS");
 
     return LIST_OF_MONSTERS[rank];
 }
@@ -71,6 +68,7 @@ Character create_random_monster()
     Monster   monster_infos = get_random_monster();
 
     monster.set_name(monster_infos._name);
+    monster.set_health_points(monster_infos._health_points);
 
     return monster;
 }

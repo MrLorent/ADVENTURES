@@ -41,7 +41,8 @@ int main()
 
         case Menus::Quest_Menu: {
             show_countdown_menu(quest_duration);
-            fight_against_monster();
+            fight_against_monster(player);
+            game_manager.set_state(Menus::Main_Menu);
         } break;
 
         case Menus::Quit: {

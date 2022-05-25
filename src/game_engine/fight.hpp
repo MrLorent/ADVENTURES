@@ -3,4 +3,4 @@
 
 #include "Character.hpp"
 
-void fight_against_monster(/*const Character& player*/);
+void fight_against_monster(const Character& player);

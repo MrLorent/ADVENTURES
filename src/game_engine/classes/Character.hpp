@@ -19,12 +19,12 @@ constexpr std::initializer_list<Classes> list_of_classes = {
     Classes::Magician,
 };
 
-using CharacterClass = std::variant<Archer, Knight, Magician>;
+using Class = std::variant<Archer, Knight, Magician>;
 
 class Character {
 private:
     // ATTRIBUT
-    CharacterClass _class;
+    Class _class;
 
 public:
     // CONSTRUCTORS
@@ -38,9 +38,11 @@ public:
 
     // GETTERS
     std::string get_name() const;
+    int         get_health() const;
 
     // SETTERS
     void set_name(const std::string& new_name);
+    void set_health_points(const int new_health_points);
 
     // METHODS
     void introduce_themself() const;

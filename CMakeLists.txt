@@ -21,6 +21,7 @@ include_directories(
     src
     src/my-libs/casts
     src/my-libs/random
+    src/my-libs/string_tools
     src/game_engine
     src/game_engine/classes
     src/game_engine/characters
