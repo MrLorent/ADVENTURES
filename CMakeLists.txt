@@ -22,7 +22,9 @@ include_directories(
     src/my-libs/casts
     src/my-libs/random
     src/game_engine
+    src/game_engine/classes
     src/game_engine/characters
+    src/game_engine/monsters
     src/ihm/menus
     src/ihm/inputs
 )

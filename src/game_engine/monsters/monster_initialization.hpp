@@ -1,4 +1,4 @@
 #pragma once
-#define FIGHT_MENU
+#define MONSTER_INITIALISATION_HPP
 
 void get_random_monster();

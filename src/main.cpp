@@ -6,7 +6,8 @@
 
 #include "GameStateManager.hpp"
 #include "Character.hpp"
-#include "character_init.hpp"
+#include "character_initialization.hpp"
+#include "monster_initialization.hpp"
 
 int main()
 {

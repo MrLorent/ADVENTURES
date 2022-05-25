@@ -7,7 +7,7 @@
 #include <json/json.h>
 
 #include "random.hpp"
-#include "fight_menu.hpp"
+#include "monster_initialization.hpp"
 
 struct Monster {
     const std::string _name;
@@ -53,7 +53,7 @@ void get_random_monster()
 {
     const int          MAX_RANK = LIST_OF_MONSTERS.size() - 1;
     const float        t        = rand<float>(0.f, 1.f);
-    std::vector<float> lambdas  = {1.f, 2.f, 3.f};
+    std::vector<float> lambdas  = {1.f, 2.f};
 
     const float X    = generalized_erlang(t, lambdas);
     const int   rank = std::clamp(int(MAX_RANK * X / 5.f), 0, MAX_RANK);
