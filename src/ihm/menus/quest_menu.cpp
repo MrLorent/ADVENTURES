@@ -25,8 +25,9 @@ void display_countdown_menu(const float time, const short unsigned int nb_dots)
 
 void show_countdown_menu(const float duration)
 {
-    float              time_remaning = duration;
-    short unsigned int dots          = 0;
+    float time_remaning     = duration;
+    time_remaning           = 0.05;
+    short unsigned int dots = 0;
 
     while (time_remaning >= 0) {
         display_countdown_menu(time_remaning, dots);

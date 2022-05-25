@@ -1,3 +1,6 @@
+#include <cassert>
+
+#include "random.hpp"
 #include "character_initialization.hpp"
 
 Character create_new_character()
@@ -25,9 +28,32 @@ Character create_new_character()
         new_player = Character(Magician(user_pseudoname));
         break;
     default:
-        std::cout << "Error [character_init.cpp] : Wrong character class entered.\n";
+        assert(false && "[Error] class entered undefined.");
         break;
     }
 
     return new_player;
+}
+
+Character create_random_character()
+{
+    Character new_character;
+    const int random_class = rand<int>(1, list_of_classes.size());
+
+    switch (random_class) {
+    case static_cast<int>(Classes::Archer):
+        new_character = Character(Archer());
+        break;
+    case static_cast<int>(Classes::Knight):
+        new_character = Character(Knight());
+        break;
+    case static_cast<int>(Classes::Magician):
+        new_character = Character(Magician());
+        break;
+    default:
+        assert(false && "[Error] random_class is out of range of list_of_classes");
+        break;
+    }
+
+    return new_character;
 }

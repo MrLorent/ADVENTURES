@@ -2,11 +2,14 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <array>
 #include <algorithm>
+#include <cassert>
 
 #include <json/json.h>
 
 #include "random.hpp"
+#include "character_initialization.hpp"
 #include "monster_initialization.hpp"
 
 struct Monster {
@@ -25,6 +28,7 @@ struct Monster {
 };
 
 std::vector<Monster> load_monsters();
+Monster              get_random_monster();
 
 const std::vector<Monster> LIST_OF_MONSTERS = load_monsters();
 
@@ -49,7 +53,7 @@ std::vector<Monster> load_monsters()
     return list_of_monsters;
 }
 
-void get_random_monster()
+Monster get_random_monster()
 {
     const int          MAX_RANK = LIST_OF_MONSTERS.size() - 1;
     const float        t        = rand<float>(0.f, 1.f);
@@ -58,6 +62,15 @@ void get_random_monster()
     const float X    = generalized_erlang(t, lambdas);
     const int   rank = std::clamp(int(MAX_RANK * X / 5.f), 0, MAX_RANK);
 
-    std::cout << LIST_OF_MONSTERS[rank]._name << "\n"
-              << LIST_OF_MONSTERS[rank]._experience << "xp\n";
+    return LIST_OF_MONSTERS[rank];
+}
+
+Character create_random_monster()
+{
+    Character monster       = create_random_character();
+    Monster   monster_infos = get_random_monster();
+
+    monster.set_name(monster_infos._name);
+
+    return monster;
 }

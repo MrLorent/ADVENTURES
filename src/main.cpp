@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 #include "random.hpp"
 #include "casts.hpp"
@@ -7,14 +8,10 @@
 #include "GameStateManager.hpp"
 #include "Character.hpp"
 #include "character_initialization.hpp"
-#include "monster_initialization.hpp"
+#include "fight.hpp"
 
 int main()
 {
-    while (true) {
-        get_random_monster();
-        wait_for_any_key_pressed();
-    }
     GameStateManager game_manager;
     Character        player;
     float            quest_duration = 0.f;
@@ -44,6 +41,7 @@ int main()
 
         case Menus::Quest_Menu: {
             show_countdown_menu(quest_duration);
+            fight_against_monster();
         } break;
 
         case Menus::Quit: {
@@ -51,6 +49,7 @@ int main()
         } break;
 
         default:
+            assert(false && "[Error] game_manager._state asked is undefine.");
             break;
         }
     }
