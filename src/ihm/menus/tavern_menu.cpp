@@ -1,4 +1,8 @@
+#include <iostream>
+#include <fstream>
 #include <vector>
+
+#include <json/json.h>
 
 #include "random.hpp"
 #include "casts.hpp"
@@ -6,14 +10,51 @@
 #include "menu_commons.hpp"
 #include "tavern_menu.hpp"
 
+struct Quest {
+    const std::string _name;
+
+    Quest()
+        : _name("unknown")
+    {
+    }
+
+    Quest(const std::string name)
+        : _name(name)
+    {
+    }
+};
+
+// PROTOTYPES
+std::vector<Quest> load_quests();
+void               display_tavern_menu();
+
 // LOCAL GLOBALS
 namespace {
+const std::vector<Quest> LIST_OF_QUESTS = load_quests();
+
 constexpr short unsigned nb_quests = 3;
 std::vector<float>       quests_durations(nb_quests, 0.f);
 } // namespace
 
-// PROTOTYPES
-void display_tavern_menu();
+std::vector<Quest> load_quests()
+{
+    std::vector<Quest> list_of_quests;
+
+    try {
+        Json::Value   quests_json;
+        std::ifstream json_file("assets/adventures.json", std::ifstream::binary);
+        json_file >> quests_json;
+
+        for (auto adventure : quests_json["adventures"]) {
+            list_of_quests.push_back(Quest(adventure.get("name", "unknown").asString()));
+        }
+    }
+    catch (const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+
+    return list_of_quests;
+}
 
 void display_tavern_menu()
 {
@@ -24,17 +65,18 @@ void display_tavern_menu()
     for (auto command : tavern_menu._options) {
         std::string option = " ";
         option += tavern_menu._commands.at(command);
-        option += ". " + tavern_menu._labels.at(command);
-        display_line(option);
 
         if (std::tolower(tavern_menu._commands.at(command)) != std::tolower(tavern_menu._last_command)) {
-            display_line(" (Duration : ");
+            option += ". " + LIST_OF_QUESTS[rand<int>(0, LIST_OF_QUESTS.size() - 1)]._name;
+            option += " (Duration : ";
+            display_line(option);
             display_decimal_with_precision(quests_durations.at(quest_count), 2);
             display_line(" min)\n");
             quest_count++;
         }
         else {
-            display_text("\n");
+            option += ". " + tavern_menu._labels.at(command);
+            display_text(option + "\n");
         }
     }
 }

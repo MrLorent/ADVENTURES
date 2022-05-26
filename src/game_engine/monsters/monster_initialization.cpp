@@ -34,7 +34,6 @@ std::vector<Monster> load_monsters()
 
     try {
         Json::Value   monsters_json;
-        Json::Reader  reader;
         std::ifstream json_file("assets/monsters.json", std::ifstream::binary);
         json_file >> monsters_json;
 
