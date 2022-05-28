@@ -13,7 +13,7 @@ std::string MONSTER_NAME = "UNKNOWN";
 } // namespace
 
 void display_fight_menu();
-void fight(std::vector<Character>& combatants);
+void fight(Character& player, const Character& monster);
 
 void display_fight_menu()
 {
@@ -24,13 +24,14 @@ void fight_against_monster(Character& player)
 {
     Character monster = create_random_monster();
     MONSTER_NAME      = to_upper(monster.get_name());
-    fight(std::vector<Character>(2) = {player, monster});
+    fight(player, monster);
 }
 
-void fight(std::vector<Character>& combatants)
+void fight(Character& player, const Character& monster)
 {
-    short unsigned int attacker                 = 0;
-    std::vector<int>   combatants_health_points = {combatants[0].get_health(), combatants[1].get_health()};
+    std::vector<Character> combatants               = {player, monster};
+    short unsigned int     attacker                 = 0;
+    std::vector<int>       combatants_health_points = {combatants[0].get_health(), combatants[1].get_health()};
 
     while (combatants_health_points[0] > 0 && combatants_health_points[1] > 0) {
         display_fight_menu();
@@ -72,8 +73,8 @@ void fight(std::vector<Character>& combatants)
     if (attacker == 1) {
         display_main_title("VICTORY");
         display_text("You won !");
-        display_text(combatants[0].get_name_and_title() + " gain " + std::to_string(combatants[1].get_experience() * 0.3) + " xp.\n");
-        combatants[0].add_experience(combatants[1].get_experience() * 0.3);
+        display_text(player.get_name_and_title() + " gain " + std::to_string(monster.get_experience() * 0.3) + " xp.\n");
+        player.add_experience(monster.get_experience() * 0.3);
         wait_for_any_key_pressed();
     }
     else {
