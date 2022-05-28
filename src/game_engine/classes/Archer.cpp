@@ -1,6 +1,8 @@
 #include <iostream>
 
 #include "Archer.hpp"
+#include "attack_states.hpp"
+#include "random.hpp"
 
 // CONSTRUCTORS
 Archer::Archer()
@@ -26,4 +28,34 @@ Archer::~Archer()
 void Archer::introduce_themself() const
 {
     std::cout << "Hi there, I'm " << _caracs._name << ", the Archer.\n";
+}
+
+int Archer::attacks() const
+{
+    int       attack_state = static_cast<int>(Attack_states::Success);
+    const int result       = throw_dice(20);
+
+    if (result == 1) {
+        attack_state = static_cast<int>(Attack_states::Critic_failure);
+    }
+    else if (result == 20) {
+        attack_state = static_cast<int>(Attack_states::Critic_success);
+    }
+
+    return attack_state;
+}
+
+float Archer::get_damages() const
+{
+    return 5 + _caracs._experience * 0.075;
+}
+
+bool Archer::dodges() const
+{
+    return bernoulli(0.6f);
+}
+
+void Archer::add_experience(const int experience)
+{
+    _caracs._experience += experience;
 }

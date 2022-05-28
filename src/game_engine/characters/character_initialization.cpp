@@ -38,7 +38,7 @@ Character create_new_character()
 Character create_random_character()
 {
     Character new_character;
-    const int random_class = rand<int>(1, list_of_classes.size());
+    const int random_class = rand<int>(1, 3);
 
     switch (random_class) {
     case static_cast<int>(Classes::Archer):

@@ -68,6 +68,7 @@ Character create_random_monster()
 
     monster.set_name(monster_infos._name);
     monster.set_health_points(monster_infos._health_points);
+    monster.add_experience(monster_infos._experience);
 
     return monster;
 }

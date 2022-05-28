@@ -38,12 +38,18 @@ public:
 
     // GETTERS
     std::string get_name() const;
+    std::string get_name_and_title() const;
     int         get_health() const;
+    int         get_experience() const;
 
     // SETTERS
     void set_name(const std::string& new_name);
     void set_health_points(const int new_health_points);
 
     // METHODS
-    void introduce_themself() const;
+    void  introduce_themself() const;
+    int   attacks() const;
+    float get_damages() const;
+    bool  dodges() const;
+    void  add_experience(const int experience);
 };

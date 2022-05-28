@@ -12,12 +12,12 @@ int bernoulli(const float threshold)
     }
 }
 
-int throw_a_dice()
+int throw_dice(const unsigned int number_of_faces)
 {
     float random_value = rand<float>(0.0, 1.0);
 
     int i = 1;
-    while (random_value > (i / 6.f) && i <= 6) {
+    while (random_value > (i / float(number_of_faces)) && i <= static_cast<int>(number_of_faces)) {
         i++;
     }
 

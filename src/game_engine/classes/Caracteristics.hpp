@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "attack_states.hpp"
+
 struct Caracteristics {
     // ATTRIBUTS
     std::string  _name;
