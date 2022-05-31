@@ -50,12 +50,13 @@ int Magician::attacks()
 
 float Magician::get_damages() const
 {
-    return 20;
+    return 4 + (_caracs._experience * 75 / 700) * 0.8;
 }
 
 bool Magician::dodges() const
 {
-    return bernoulli(0.95f);
+    const float p = 0.05 + 0.05 * (_caracs._experience * 676 / 62000);
+    return bernoulli(1 - p);
 }
 
 void Magician::add_experience(const int experience)

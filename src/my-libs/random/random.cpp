@@ -27,11 +27,13 @@ int throw_dice(const unsigned int number_of_faces)
 int geometric_law(const float p)
 {
     const float q      = 1 - p;
-    int         nb_try = 1;
+    int         nb_try = 0;
 
-    while (bernoulli(q) == 0) {
+    while (bernoulli(q) == 0 && p != 0) {
         nb_try++;
     }
+
+    nb_try++;
 
     return nb_try;
 }
@@ -49,13 +51,13 @@ float box_muller(float expectation, float variance)
     return expectation + variance * X;
 }
 
-float generalized_erlang(const float t, const std::vector<float>& lambdas)
+float generalized_erlang(const float lambda, const int k)
 {
     float result = 0.f;
 
-    for (float lambda : lambdas) {
-        result += lambda * std::exp(-t * lambda);
+    for (int i = 0; i < k; ++i) {
+        result += std::log(rand<float>(0, 1));
     }
 
-    return result;
+    return -(1 / lambda) * result;
 }

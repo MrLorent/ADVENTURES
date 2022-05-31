@@ -51,44 +51,41 @@ std::vector<Monster> load_monsters()
 
 Monster get_random_monster(Difficulty game_difficulty)
 {
-    const int   MAX_RANK = LIST_OF_MONSTERS.size() - 1;
-    const float t        = rand<float>(0.f, 1.f);
-    int         rank     = 0;
+    const int MAX_RANK = LIST_OF_MONSTERS.size() - 1;
+    int       rank     = 0;
 
     switch (game_difficulty) {
     case Difficulty::Peaceful: {
-        std::vector<float> lambdas = {1.f, 2.f};
-        float              X       = generalized_erlang(t, lambdas);
-        rank                       = int(MAX_RANK * X / 20.f);
-        rank                       = std::clamp(rank, 0, MAX_RANK);
+        const float X = generalized_erlang(2, 2);
+        rank          = int(MAX_RANK * X / 20.f);
+        rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     case Difficulty::Easy: {
-        std::vector<float> lambdas = {5.f, 2.f};
-        float              X       = generalized_erlang(t, lambdas);
-        rank                       = int(MAX_RANK * X / 20.f);
-        rank                       = std::clamp(rank, 0, MAX_RANK);
+        const float X = generalized_erlang(1, 5);
+        rank          = int(MAX_RANK * X / 20.f);
+        rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     case Difficulty::Normal: {
-        std::vector<float> lambdas = {9.f, 2.f};
-        float              X       = generalized_erlang(t, lambdas);
-        rank                       = int(MAX_RANK * X / 20.f);
-        rank                       = std::clamp(rank, 0, MAX_RANK);
+        const float X = generalized_erlang(1, 9);
+        clear_console();
+        std::cout << X << "\n";
+        wait_for_any_key_pressed();
+        rank = int(MAX_RANK * X / 20.f);
+        rank = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     case Difficulty::Hard: {
-        std::vector<float> lambdas = {13.f, 2.f};
-        float              X       = generalized_erlang(t, lambdas);
-        rank                       = int(MAX_RANK * X / 20.f);
-        rank                       = std::clamp(rank, 0, MAX_RANK);
+        const float X = generalized_erlang(1, 13);
+        rank          = int(MAX_RANK * X / 20.f);
+        rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     case Difficulty::Impossible: {
-        std::vector<float> lambdas = {17.f, 2.f};
-        float              X       = generalized_erlang(t, lambdas);
-        rank                       = MAX_RANK - int(MAX_RANK * X / 20.f);
-        rank                       = std::clamp(rank, 0, MAX_RANK);
+        const float X = generalized_erlang(1, 17);
+        rank          = int(MAX_RANK * X / 20.f);
+        rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     default:
