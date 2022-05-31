@@ -50,7 +50,7 @@ int Archer::attacks()
 
 float Archer::get_damages() const
 {
-    return 5 + _caracs._experience * 0.075;
+    return 5;
 }
 
 bool Archer::dodges() const

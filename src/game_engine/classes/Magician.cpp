@@ -50,7 +50,7 @@ int Magician::attacks()
 
 float Magician::get_damages() const
 {
-    return 20 + _caracs._experience * 0.065;
+    return 20;
 }
 
 bool Magician::dodges() const

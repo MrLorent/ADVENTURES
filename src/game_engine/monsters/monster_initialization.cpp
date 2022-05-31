@@ -9,6 +9,7 @@
 #include <json/json.h>
 
 #include "random.hpp"
+#include "difficulties.hpp"
 #include "character_initialization.hpp"
 #include "monster_initialization.hpp"
 
@@ -24,7 +25,7 @@ struct Monster {
 };
 
 std::vector<Monster> load_monsters();
-Monster              get_random_monster();
+Monster              get_random_monster(Difficulty game_difficulty);
 
 const std::vector<Monster> LIST_OF_MONSTERS = load_monsters();
 
@@ -48,23 +49,62 @@ std::vector<Monster> load_monsters()
     return list_of_monsters;
 }
 
-Monster get_random_monster()
+Monster get_random_monster(Difficulty game_difficulty)
 {
-    const int          MAX_RANK = LIST_OF_MONSTERS.size() - 1;
-    const float        t        = rand<float>(0.f, 1.f);
-    std::vector<float> lambdas  = {2.f, 2.f};
+    const int   MAX_RANK = LIST_OF_MONSTERS.size() - 1;
+    const float t        = rand<float>(0.f, 1.f);
+    int         rank     = 0;
 
-    const float X    = generalized_erlang(t, lambdas);
-    const int   rank = std::clamp(int(MAX_RANK * X / 20.f), 0, MAX_RANK);
+    switch (game_difficulty) {
+    case Difficulty::Peaceful: {
+        std::vector<float> lambdas = {1.f, 2.f};
+        float              X       = generalized_erlang(t, lambdas);
+        rank                       = int(MAX_RANK * X / 20.f);
+        rank                       = std::clamp(rank, 0, MAX_RANK);
+    } break;
+
+    case Difficulty::Easy: {
+        std::vector<float> lambdas = {5.f, 2.f};
+        float              X       = generalized_erlang(t, lambdas);
+        rank                       = int(MAX_RANK * X / 20.f);
+        rank                       = std::clamp(rank, 0, MAX_RANK);
+    } break;
+
+    case Difficulty::Normal: {
+        std::vector<float> lambdas = {9.f, 2.f};
+        float              X       = generalized_erlang(t, lambdas);
+        rank                       = int(MAX_RANK * X / 20.f);
+        rank                       = std::clamp(rank, 0, MAX_RANK);
+    } break;
+
+    case Difficulty::Hard: {
+        std::vector<float> lambdas = {13.f, 2.f};
+        float              X       = generalized_erlang(t, lambdas);
+        rank                       = int(MAX_RANK * X / 20.f);
+        rank                       = std::clamp(rank, 0, MAX_RANK);
+    } break;
+
+    case Difficulty::Impossible: {
+        std::vector<float> lambdas = {17.f, 2.f};
+        float              X       = generalized_erlang(t, lambdas);
+        rank                       = MAX_RANK - int(MAX_RANK * X / 20.f);
+        rank                       = std::clamp(rank, 0, MAX_RANK);
+    } break;
+
+    default:
+        assert(false && "[Error] game difficulty asked is undefine.");
+        break;
+    }
+
     assert((rank >= 0 || rank <= MAX_RANK) && "Rank asked out of range of LIST_OF_MONSTERS");
 
     return LIST_OF_MONSTERS[rank];
 }
 
-Character create_random_monster()
+Character create_random_monster(Difficulty game_difficulty)
 {
     Character monster       = create_random_character();
-    Monster   monster_infos = get_random_monster();
+    Monster   monster_infos = get_random_monster(game_difficulty);
 
     monster.set_name(monster_infos._name);
     monster.set_health_points(monster_infos._health_points);

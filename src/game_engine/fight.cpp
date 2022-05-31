@@ -14,6 +14,7 @@ std::string MONSTER_NAME = "UNKNOWN";
 } // namespace
 
 void display_fight_menu();
+void display_monster_presentation();
 void fight(Character& player, const Character& monster);
 
 void display_fight_menu()
@@ -21,37 +22,28 @@ void display_fight_menu()
     display_main_title("FIGHT AGAINST " + MONSTER_NAME);
 }
 
+void display_monster_presentation(Character monster)
+{
+    display_main_title(MONSTER_NAME);
+
+    display_text("You come accross a " + monster.get_name() + " !");
+    display_line("Experience : " + std::to_string(monster.get_experience()));
+    display_text(" xp");
+    display_line("Total health points : " + std::to_string(monster.get_health()));
+    display_text(" hp\n");
+
+    display_text("Get ready !");
+
+    wait_for_any_key_pressed();
+}
+
 void fight_against_monster(Character& player, Difficulty game_difficulty)
 {
-    clear_console();
-    switch (game_difficulty) {
-    case Difficulty::Peaceful: {
-        std::cout << "Peaceful\n";
-    } break;
-
-    case Difficulty::Easy: {
-        std::cout << "Easy\n";
-    } break;
-
-    case Difficulty::Normal: {
-        std::cout << "Normal\n";
-    } break;
-
-    case Difficulty::Hard: {
-        std::cout << "Hard\n";
-    } break;
-
-    case Difficulty::Impossible: {
-        std::cout << "Impossible\n";
-    } break;
-
-    default:
-        assert(false && "[Error] game difficulty asked is undefine.");
-        break;
-    }
-    wait_for_any_key_pressed();
-    Character monster = create_random_monster();
+    Character monster = create_random_monster(game_difficulty);
     MONSTER_NAME      = to_upper(monster.get_name());
+
+    display_monster_presentation(monster);
+
     fight(player, monster);
 }
 

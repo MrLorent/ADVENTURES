@@ -40,7 +40,7 @@ int Knight::attacks()
     if (result == 1) {
         attack_state = static_cast<int>(Attack_states::Critic_failure);
     }
-    else if (result < 15) {
+    else if (result == 20) {
         increment_nb_critic_successes();
         attack_state = static_cast<int>(Attack_states::Critic_success);
     }
@@ -50,7 +50,7 @@ int Knight::attacks()
 
 float Knight::get_damages() const
 {
-    return 10 + _caracs._experience * 0.05;
+    return 10;
 }
 
 bool Knight::dodges() const
