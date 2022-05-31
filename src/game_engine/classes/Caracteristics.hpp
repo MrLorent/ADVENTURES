@@ -11,6 +11,10 @@ struct Caracteristics {
     unsigned int _experience;
     unsigned int _health_points;
 
+    // STATISTICS
+    unsigned int _nb_critics_successes;
+    unsigned int _nb_throws;
+
     // CONSTRUCTORS
     Caracteristics(const std::string& name, const unsigned int health);
 

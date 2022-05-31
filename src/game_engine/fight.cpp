@@ -70,6 +70,9 @@ void fight(Character& player, const Character& monster)
         attacker = defender;
     }
 
+    player.add_nb_critic_successes(combatants[0].get_nb_critic_successes());
+    player.add_nb_throws(combatants[0].get_nb_throws());
+
     if (attacker == 1) {
         display_main_title("VICTORY");
         display_text("You won !");

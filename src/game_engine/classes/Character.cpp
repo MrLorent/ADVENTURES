@@ -50,6 +50,18 @@ int Character::get_experience() const
     return std::visit(call_get_experience, _class);
 }
 
+int Character::get_nb_critic_successes() const
+{
+    auto call_get_nb_critic_successes = [](auto& character) { return character.get_nb_critic_successes(); };
+    return std::visit(call_get_nb_critic_successes, _class);
+}
+
+int Character::get_nb_throws() const
+{
+    auto call_get_nb_throws = [](auto& character) { return character.get_nb_throws(); };
+    return std::visit(call_get_nb_throws, _class);
+}
+
 // SETTERS
 void Character::set_name(const std::string& new_name)
 {
@@ -67,6 +79,22 @@ void Character::set_health_points(const int new_health_points)
     std::visit(call_set_health_points, _class, param_health_points);
 }
 
+void Character::add_nb_critic_successes(const unsigned int nb_critics)
+{
+    std::variant<const unsigned int> param_nb_critics(nb_critics);
+
+    auto call_add_nb_critic_successes = [](auto& character, const unsigned int nb_critics) { character.add_nb_critic_successes(nb_critics); };
+    std::visit(call_add_nb_critic_successes, _class, param_nb_critics);
+}
+
+void Character::add_nb_throws(const unsigned int nb_throws)
+{
+    std::variant<const unsigned int> param_nb_throws(nb_throws);
+
+    auto call_add_nb_throws = [](auto& character, const unsigned int nb_throws) { character.add_nb_throws(nb_throws); };
+    std::visit(call_add_nb_throws, _class, param_nb_throws);
+}
+
 // METHODS
 void Character::introduce_themself() const
 {
@@ -74,7 +102,7 @@ void Character::introduce_themself() const
     std::visit(call_introduce_themself, _class);
 }
 
-int Character::attacks() const
+int Character::attacks()
 {
     auto call_attacks = [](auto& character) { return character.attacks(); };
     return std::visit(call_attacks, _class);

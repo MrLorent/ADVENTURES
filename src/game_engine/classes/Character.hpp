@@ -41,14 +41,18 @@ public:
     std::string get_name_and_title() const;
     int         get_health() const;
     int         get_experience() const;
+    int         get_nb_critic_successes() const;
+    int         get_nb_throws() const;
 
     // SETTERS
     void set_name(const std::string& new_name);
     void set_health_points(const int new_health_points);
+    void add_nb_critic_successes(const unsigned int nb_critics);
+    void add_nb_throws(const unsigned int nb_throws);
 
     // METHODS
     void  introduce_themself() const;
-    int   attacks() const;
+    int   attacks();
     float get_damages() const;
     bool  dodges() const;
     void  add_experience(const int experience);

@@ -17,6 +17,14 @@ void display_stats_menu()
     display_line("Experience : ");
     display_decimal_with_precision(PLAYER.get_experience(), 2);
     display_text(" xp");
+    display_line("Critic success(es) : ");
+    display_decimal_with_precision(PLAYER.get_nb_critic_successes(), 2);
+    display_line("\n");
+    display_line("Total throws : ");
+    display_decimal_with_precision(PLAYER.get_nb_throws(), 2);
+    display_line("\n");
+
+    // QUIT INSTRUCTIONS
     display_line("\n");
     display_text(stats_menu._instruction + "\n");
 }

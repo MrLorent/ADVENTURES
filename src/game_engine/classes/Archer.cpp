@@ -30,15 +30,18 @@ void Archer::introduce_themself() const
     std::cout << "Hi there, I'm " << _caracs._name << ", the Archer.\n";
 }
 
-int Archer::attacks() const
+int Archer::attacks()
 {
     int       attack_state = static_cast<int>(Attack_states::Success);
     const int result       = throw_dice(20);
+
+    increment_nb_throws();
 
     if (result == 1) {
         attack_state = static_cast<int>(Attack_states::Critic_failure);
     }
     else if (result == 20) {
+        increment_nb_critic_successes();
         attack_state = static_cast<int>(Attack_states::Critic_success);
     }
 
