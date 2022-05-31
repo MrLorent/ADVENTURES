@@ -57,7 +57,7 @@ int main()
 
         case Menus::Quest_Menu: {
             show_countdown_to_quest(quest_duration);
-            fight_against_monster(player);
+            fight_against_monster(player, game_difficulty);
             show_countdown_to_tavern(0.05);
             game_manager.set_state(Menus::Main_Menu);
         } break;

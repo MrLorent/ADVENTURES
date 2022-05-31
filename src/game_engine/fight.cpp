@@ -1,4 +1,5 @@
 #include <vector>
+#include <cassert>
 
 #include "string_tools.hpp"
 #include "user_input.hpp"
@@ -20,8 +21,35 @@ void display_fight_menu()
     display_main_title("FIGHT AGAINST " + MONSTER_NAME);
 }
 
-void fight_against_monster(Character& player)
+void fight_against_monster(Character& player, Difficulty game_difficulty)
 {
+    clear_console();
+    switch (game_difficulty) {
+    case Difficulty::Peaceful: {
+        std::cout << "Peaceful\n";
+    } break;
+
+    case Difficulty::Easy: {
+        std::cout << "Easy\n";
+    } break;
+
+    case Difficulty::Normal: {
+        std::cout << "Normal\n";
+    } break;
+
+    case Difficulty::Hard: {
+        std::cout << "Hard\n";
+    } break;
+
+    case Difficulty::Impossible: {
+        std::cout << "Impossible\n";
+    } break;
+
+    default:
+        assert(false && "[Error] game difficulty asked is undefine.");
+        break;
+    }
+    wait_for_any_key_pressed();
     Character monster = create_random_monster();
     MONSTER_NAME      = to_upper(monster.get_name());
     fight(player, monster);
