@@ -39,6 +39,11 @@ int main()
             game_manager.set_state(command);
         } break;
 
+        case Menus::Options_Menu: {
+            const char command = show_options_menu();
+            game_manager.set_state(command);
+        } break;
+
         case Menus::Tavern_Menu: {
             const char command = show_tavern_menu(quest_duration);
             game_manager.set_state(command);

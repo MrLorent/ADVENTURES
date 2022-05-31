@@ -36,20 +36,6 @@ int geometric_law(const float p)
     return nb_try;
 }
 
-int random_choose(std::vector<int> universe, std::vector<float> probability)
-{
-    float random_value = rand<float>(0.0, 1.0);
-
-    int   i  = 0;
-    float p1 = probability[0];
-    while (random_value > p1 && i < int(universe.size())) {
-        i++;
-        p1 += probability[i];
-    }
-
-    return universe[i];
-}
-
 float box_muller(float expectation, float variance)
 {
     const float U1 = rand<float>(0.f, 1.f);

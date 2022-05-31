@@ -42,6 +42,9 @@ void GameStateManager::set_state(const char command)
         case static_cast<int>(MainMenu::Statistics):
             _state = Menus::Stats_Menu;
             break;
+        case static_cast<int>(MainMenu::Options):
+            _state = Menus::Options_Menu;
+            break;
         case static_cast<int>(MainMenu::Quit):
             _state = Menus::Start_Menu;
             break;
@@ -53,6 +56,16 @@ void GameStateManager::set_state(const char command)
     case Menus::Stats_Menu: {
         switch (command) {
         case static_cast<int>(StatsMenu::Quit):
+            _state = Menus::Main_Menu;
+            break;
+        default:
+            break;
+        }
+    } break;
+
+    case Menus::Options_Menu: {
+        switch (command) {
+        case static_cast<int>(OptionsMenu::Quit):
             _state = Menus::Main_Menu;
             break;
         default:

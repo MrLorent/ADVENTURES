@@ -52,10 +52,10 @@ Monster get_random_monster()
 {
     const int          MAX_RANK = LIST_OF_MONSTERS.size() - 1;
     const float        t        = rand<float>(0.f, 1.f);
-    std::vector<float> lambdas  = {1.f, 2.f};
+    std::vector<float> lambdas  = {2.f, 2.f};
 
     const float X    = generalized_erlang(t, lambdas);
-    const int   rank = std::clamp(int(MAX_RANK * X / 5.f), 0, MAX_RANK);
+    const int   rank = std::clamp(int(MAX_RANK * X / 20.f), 0, MAX_RANK);
     assert((rank >= 0 || rank <= MAX_RANK) && "Rank asked out of range of LIST_OF_MONSTERS");
 
     return LIST_OF_MONSTERS[rank];

@@ -3,6 +3,7 @@
 
 #include "start_menu.hpp"
 #include "main_menu.hpp"
+#include "options_menu.hpp"
 #include "stats_menu.hpp"
 #include "tavern_menu.hpp"
 #include "quest_menu.hpp"
@@ -13,9 +14,10 @@ enum Menus {
     Character_Initialisation = 1,
     Main_Menu                = 2,
     Stats_Menu               = 3,
-    Tavern_Menu              = 4,
-    Quest_Menu               = 5,
-    Quit                     = 6,
+    Options_Menu             = 4,
+    Tavern_Menu              = 5,
+    Quest_Menu               = 6,
+    Quit                     = 7,
 };
 
 struct GameStateManager {
