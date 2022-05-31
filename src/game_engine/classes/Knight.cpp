@@ -40,7 +40,7 @@ int Knight::attacks()
     if (result == 1) {
         attack_state = static_cast<int>(Attack_states::Critic_failure);
     }
-    else if (result < 20) {
+    else if (result < 15) {
         increment_nb_critic_successes();
         attack_state = static_cast<int>(Attack_states::Critic_success);
     }

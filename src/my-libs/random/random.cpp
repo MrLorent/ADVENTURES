@@ -24,6 +24,18 @@ int throw_dice(const unsigned int number_of_faces)
     return i;
 }
 
+int geometric_law(const float p)
+{
+    const float q      = 1 - p;
+    int         nb_try = 1;
+
+    while (bernoulli(q) == 0) {
+        nb_try++;
+    }
+
+    return nb_try;
+}
+
 int random_choose(std::vector<int> universe, std::vector<float> probability)
 {
     float random_value = rand<float>(0.0, 1.0);
