@@ -12,30 +12,28 @@ int bernoulli(const float threshold)
     }
 }
 
-int throw_a_dice()
+int throw_dice(const unsigned int number_of_faces)
 {
     float random_value = rand<float>(0.0, 1.0);
 
     int i = 1;
-    while (random_value > (i / 6.f) && i <= 6) {
+    while (random_value > (i / float(number_of_faces)) && i <= static_cast<int>(number_of_faces)) {
         i++;
     }
 
     return i;
 }
 
-int random_choose(std::vector<int> universe, std::vector<float> probability)
+int geometric_law(const float p)
 {
-    float random_value = rand<float>(0.0, 1.0);
+    const float q      = 1 - p;
+    int         nb_try = 1;
 
-    int   i  = 0;
-    float p1 = probability[0];
-    while (random_value > p1 && i < int(universe.size())) {
-        i++;
-        p1 += probability[i];
+    while (bernoulli(q) == 0) {
+        nb_try++;
     }
 
-    return universe[i];
+    return nb_try;
 }
 
 float box_muller(float expectation, float variance)

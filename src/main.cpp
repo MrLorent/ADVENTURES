@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 #include "random.hpp"
 #include "casts.hpp"
@@ -7,14 +8,10 @@
 #include "GameStateManager.hpp"
 #include "Character.hpp"
 #include "character_initialization.hpp"
-#include "monster_initialization.hpp"
+#include "fight.hpp"
 
 int main()
 {
-    while (true) {
-        get_random_monster();
-        wait_for_any_key_pressed();
-    }
     GameStateManager game_manager;
     Character        player;
     float            quest_duration = 0.f;
@@ -37,13 +34,26 @@ int main()
             game_manager.set_state(command);
         } break;
 
+        case Menus::Stats_Menu: {
+            const char command = show_stats_menu(player);
+            game_manager.set_state(command);
+        } break;
+
+        case Menus::Options_Menu: {
+            const char command = show_options_menu();
+            game_manager.set_state(command);
+        } break;
+
         case Menus::Tavern_Menu: {
             const char command = show_tavern_menu(quest_duration);
             game_manager.set_state(command);
         } break;
 
         case Menus::Quest_Menu: {
-            show_countdown_menu(quest_duration);
+            show_countdown_to_quest(quest_duration);
+            fight_against_monster(player);
+            show_countdown_to_tavern(0.05);
+            game_manager.set_state(Menus::Main_Menu);
         } break;
 
         case Menus::Quit: {
@@ -51,6 +61,7 @@ int main()
         } break;
 
         default:
+            assert(false && "[Error] game_manager._state asked is undefine.");
             break;
         }
     }

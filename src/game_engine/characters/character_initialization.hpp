@@ -10,3 +10,4 @@
 #include "Character.hpp"
 
 Character create_new_character();
+Character create_random_character();

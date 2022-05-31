@@ -15,5 +15,7 @@ T rand(T min, T max)
 }
 
 int   bernoulli(const float threshold);
+int   throw_dice(const unsigned int number_of_faces);
+int   geometric_law(const float p);
 float box_muller(float expectation, float variance);
 float generalized_erlang(const float t, const std::vector<float>& lambdas);
