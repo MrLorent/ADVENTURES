@@ -6,12 +6,12 @@
 
 // CONSTRUCTORS
 Magician::Magician()
-    : _caracs(Caracteristics("unknown", 75))
+    : _caracs(Caracteristics("unknown", 37))
 {
 }
 
 Magician::Magician(const std::string& name)
-    : _caracs(Caracteristics(name, 75))
+    : _caracs(Caracteristics(name, 37))
 {
 }
 

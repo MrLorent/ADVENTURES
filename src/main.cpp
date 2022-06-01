@@ -13,7 +13,7 @@
 int main()
 {
     GameStateManager game_manager;
-    Difficulty       game_difficulty = Difficulty::Normal;
+    Difficulty       game_difficulty = Difficulty::Easy;
     Character        player;
     float            quest_duration = 0.f;
     bool             quit           = false;

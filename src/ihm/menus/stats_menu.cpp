@@ -24,10 +24,10 @@ void display_stats_menu()
     display_line("Total throws : ");
     display_decimal_with_precision(PLAYER.get_nb_throws(), 0);
     display_line("\n");
-    display_line("Number of critics expected in the 20 next throws : ");
+    display_line("Next critic expected in : ");
     const float critic_probability = float(PLAYER.get_nb_critic_successes()) / float(PLAYER.get_nb_throws());
-    display_decimal_with_precision(geometric_law(critic_probability), 2);
-    display_line("\n");
+    display_decimal_with_precision(geometric_law(critic_probability), 0);
+    display_text(" throw(s)");
 
     // QUIT INSTRUCTIONS
     display_line("\n");

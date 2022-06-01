@@ -26,6 +26,9 @@ int throw_dice(const unsigned int number_of_faces)
 
 int geometric_law(const float p)
 {
+    if (p == 0)
+        return 0;
+
     const float q      = 1 - p;
     int         nb_try = 0;
 

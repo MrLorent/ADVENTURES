@@ -68,23 +68,20 @@ Monster get_random_monster(Difficulty game_difficulty)
     } break;
 
     case Difficulty::Normal: {
-        const float X = generalized_erlang(1, 9);
-        clear_console();
-        std::cout << X << "\n";
-        wait_for_any_key_pressed();
-        rank = int(MAX_RANK * X / 20.f);
-        rank = std::clamp(rank, 0, MAX_RANK);
+        const float X = generalized_erlang(1, 10);
+        rank          = int(MAX_RANK * X / 20.f);
+        rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     case Difficulty::Hard: {
-        const float X = generalized_erlang(1, 13);
+        const float X = generalized_erlang(1, 15);
         rank          = int(MAX_RANK * X / 20.f);
         rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 
     case Difficulty::Impossible: {
-        const float X = generalized_erlang(1, 17);
-        rank          = int(MAX_RANK * X / 20.f);
+        const float X = generalized_erlang(2, 2);
+        rank          = MAX_RANK - int(MAX_RANK * X / 20.f);
         rank          = std::clamp(rank, 0, MAX_RANK);
     } break;
 

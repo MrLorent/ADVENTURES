@@ -51,11 +51,10 @@ void fight(Character& player, const Character& monster)
 {
     std::vector<Character> combatants               = {player, monster};
     short unsigned int     attacker                 = 0;
-    std::vector<int>       combatants_health_points = {combatants[0].get_health(), combatants[1].get_health()};
+    std::vector<float>     combatants_health_points = {float(combatants[0].get_health()), float(combatants[1].get_health())};
 
     while (combatants_health_points[0] > 0 && combatants_health_points[1] > 0) {
         display_fight_menu();
-        display_text(combatants[attacker].get_name_and_title() + " attacks !");
 
         const int defender = (attacker == 0 ? 1 : 0);
 
@@ -64,18 +63,17 @@ void fight(Character& player, const Character& monster)
         const bool attack_dodged = combatants[defender].dodges();
 
         if (attack_state == static_cast<int>(Attack_states::Critic_failure)) {
-            display_text("Unfortunatly, it's a critic failure...");
+            display_text(combatants[attacker].get_name() + " attacks and...\nUnfortunatly, it's a critic failure...");
         }
         else if (attack_state == static_cast<int>(Attack_states::Critic_success)) {
-            display_text("Incredible ! It's a critic success !");
+            display_text(combatants[attacker].get_name() + " attacks and...\nIncredible ! It's a critic success !");
             damages = combatants[attacker].get_damages() * 2;
         }
         else if (attack_dodged) {
-            display_text("It's a success !");
-            display_text("Unfortunatly, " + combatants[defender].get_name_and_title() + " dodges the attack...");
+            display_text(combatants[attacker].get_name() + " attacks and...\nUnfortunatly, " + combatants[defender].get_name() + " dodges the attack...");
         }
         else {
-            display_text("It's a success !");
+            display_text(combatants[attacker].get_name() + " attacks and...\nIt's a success !");
             damages = combatants[attacker].get_damages();
         }
         combatants_health_points[defender] -= damages;
@@ -83,8 +81,12 @@ void fight(Character& player, const Character& monster)
         if (combatants_health_points[defender] < 0)
             combatants_health_points[defender] = 0;
 
-        display_text("\n" + combatants[defender].get_name_and_title() + " takes " + std::to_string(damages) + " damages,");
-        display_text("and has " + std::to_string(combatants_health_points[defender]) + " health points left.\n");
+        display_line("\n" + combatants[defender].get_name() + " takes ");
+        display_decimal_with_precision(damages, 2);
+        display_text(" damages.");
+        display_line("Them has ");
+        display_decimal_with_precision(combatants_health_points[defender], 2);
+        display_text(" health points left.\n");
 
         wait_for_any_key_pressed();
         attacker = defender;

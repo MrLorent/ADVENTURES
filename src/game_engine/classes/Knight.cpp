@@ -6,12 +6,12 @@
 
 // CONSTRUCTORS
 Knight::Knight()
-    : _caracs(Caracteristics("unknown", 125))
+    : _caracs(Caracteristics("unknown", 32))
 {
 }
 
 Knight::Knight(const std::string& name)
-    : _caracs(Caracteristics(name, 125))
+    : _caracs(Caracteristics(name, 32))
 {
 }
 

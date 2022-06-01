@@ -6,12 +6,12 @@
 
 // CONSTRUCTORS
 Archer::Archer()
-    : _caracs(Caracteristics("unknown", 100))
+    : _caracs(Caracteristics("unknown", 25))
 {
 }
 
 Archer::Archer(const std::string& name)
-    : _caracs(Caracteristics(name, 100))
+    : _caracs(Caracteristics(name, 25))
 {
 }
 
