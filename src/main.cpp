@@ -13,6 +13,7 @@
 int main()
 {
     GameStateManager game_manager;
+    Difficulty       game_difficulty = Difficulty::Easy;
     Character        player;
     float            quest_duration = 0.f;
     bool             quit           = false;
@@ -44,6 +45,11 @@ int main()
             game_manager.set_state(command);
         } break;
 
+        case Menus::Difficulty_Menu: {
+            show_difficulty_menu(game_difficulty);
+            game_manager.set_state(Menus::Options_Menu);
+        } break;
+
         case Menus::Tavern_Menu: {
             const char command = show_tavern_menu(quest_duration);
             game_manager.set_state(command);
@@ -51,7 +57,7 @@ int main()
 
         case Menus::Quest_Menu: {
             show_countdown_to_quest(quest_duration);
-            fight_against_monster(player);
+            fight_against_monster(player, game_difficulty);
             show_countdown_to_tavern(0.05);
             game_manager.set_state(Menus::Main_Menu);
         } break;

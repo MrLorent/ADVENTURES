@@ -6,12 +6,12 @@
 
 // CONSTRUCTORS
 Knight::Knight()
-    : _caracs(Caracteristics("unknown", 125))
+    : _caracs(Caracteristics("unknown", 32))
 {
 }
 
 Knight::Knight(const std::string& name)
-    : _caracs(Caracteristics(name, 125))
+    : _caracs(Caracteristics(name, 32))
 {
 }
 
@@ -40,7 +40,7 @@ int Knight::attacks()
     if (result == 1) {
         attack_state = static_cast<int>(Attack_states::Critic_failure);
     }
-    else if (result < 15) {
+    else if (result == 20) {
         increment_nb_critic_successes();
         attack_state = static_cast<int>(Attack_states::Critic_success);
     }
@@ -50,12 +50,13 @@ int Knight::attacks()
 
 float Knight::get_damages() const
 {
-    return 10 + _caracs._experience * 0.05;
+    return 7 + (_caracs._experience * 75 / 700) * 0.65;
 }
 
 bool Knight::dodges() const
 {
-    return bernoulli(0.75f);
+    const float p = 0.10 + 0.15 * (_caracs._experience * 676 / 62000);
+    return bernoulli(1 - p);
 }
 
 void Knight::add_experience(const int experience)

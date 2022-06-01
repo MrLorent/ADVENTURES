@@ -20,7 +20,7 @@ public:
     // GETTERS
     std::string get_name() const { return _caracs._name; }
     std::string get_name_and_title() const { return _caracs._name + " the knight"; }
-    int         get_health() const { return _caracs._health_points; }
+    int         get_health() const { return _caracs._health_points + (676 * _caracs._experience / 155000) * 1.15; }
     int         get_experience() const { return _caracs._experience; }
     int         get_nb_critic_successes() const { return _caracs._nb_critics_successes; }
     int         get_nb_throws() const { return _caracs._nb_throws; }

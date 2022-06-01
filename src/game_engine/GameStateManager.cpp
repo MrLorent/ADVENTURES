@@ -65,6 +65,9 @@ void GameStateManager::set_state(const char command)
 
     case Menus::Options_Menu: {
         switch (command) {
+        case static_cast<int>(OptionsMenu::Difficulty):
+            _state = Menus::Difficulty_Menu;
+            break;
         case static_cast<int>(OptionsMenu::Quit):
             _state = Menus::Main_Menu;
             break;

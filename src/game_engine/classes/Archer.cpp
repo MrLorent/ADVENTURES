@@ -6,12 +6,12 @@
 
 // CONSTRUCTORS
 Archer::Archer()
-    : _caracs(Caracteristics("unknown", 100))
+    : _caracs(Caracteristics("unknown", 25))
 {
 }
 
 Archer::Archer(const std::string& name)
-    : _caracs(Caracteristics(name, 100))
+    : _caracs(Caracteristics(name, 25))
 {
 }
 
@@ -50,12 +50,13 @@ int Archer::attacks()
 
 float Archer::get_damages() const
 {
-    return 5 + _caracs._experience * 0.075;
+    return 5 + (_caracs._experience * 75 / 700) * 0.5;
 }
 
 bool Archer::dodges() const
 {
-    return bernoulli(0.6f);
+    const float p = 0.15 + 0.20 * (_caracs._experience * 676 / 62000);
+    return bernoulli(1 - p);
 }
 
 void Archer::add_experience(const int experience)

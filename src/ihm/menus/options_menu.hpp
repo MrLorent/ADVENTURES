@@ -12,7 +12,7 @@ enum class OptionsMenu : char {
 
 const std::map<OptionsMenu, std::string> options_menu_labels = {
     {OptionsMenu::Difficulty, "Difficulty"},
-    {OptionsMenu::Quit, "Quit Game"},
+    {OptionsMenu::Quit, "Quit options"},
 };
 
 const std::map<OptionsMenu, char> options_menu_commands = {
