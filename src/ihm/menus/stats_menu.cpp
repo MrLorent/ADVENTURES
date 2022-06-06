@@ -26,7 +26,14 @@ void display_stats_menu()
     display_line("\n");
     display_line("Next critic expected in : ");
     const float critic_probability = float(PLAYER.get_nb_critic_successes()) / float(PLAYER.get_nb_throws());
-    display_decimal_with_precision(geometric_law(critic_probability), 0);
+    // float       average_throws     = 0;
+    // for (int i = 0; i < 100; ++i) {
+    //     average_throws += geometric_law(critic_probability);
+    // }
+    // average_throws = average_throws / 100;
+    // int trunc      = average_throws;
+    // average_throws = trunc + (average_throws - trunc > 0.5 ? 1 : 0);
+    display_decimal_with_precision(critic_probability, 0);
     display_text(" throw(s)");
 
     // QUIT INSTRUCTIONS
